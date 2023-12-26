@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devcamp.eztour.rvwMapper">
+
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="T"'>
+                AND A.rvw_ttl LIKE concat('%', #{keyword}, '%')
+                ORDER BY A.rvw_no DESC
+            </when>
+            <when test='option=="W"'>
+                AND A.wrt_nm LIKE concat('%', #{keyword}, '%')
+                ORDER BY A.rvw_no DESC
+            </when>
+            <when test='sort=="N"'>
+                ORDER BY A.rvw_no DESC
+            </when>
+            <when test='sort=="O"'>
+                ORDER BY A.rvw_no ASC
+            </when>
+            <when test='sort=="L"'>
+                ORDER BY A.lk_cnt DESC
+            </when>
+            <when test='sort=="V"'>
+                ORDER BY A.rvw_vcnt DESC
+            </when>
+            <otherwise>
+                AND (A.rvw_ttl LIKE concat('%', #{keyword}, '%')
+                OR A.wrt_nm LIKE concat('%', #{keyword}, '%'))
+                ORDER BY A.rvw_no DESC
+            </otherwise>
+        </choose>
+    </sql>
+    
+    <select id="count" resultType="int">
+        SELECT count(*) FROM rvw;
+    </select>
+
+    <delete id="deleteAll">
+        DELETE FROM rvw
+    </delete>
+
+    <delete id="delete" parameterType="map">
+        DELETE FROM rvw WHERE rvw_no = #{rvw_no} and usr_id = #{usr_id}
+    </delete>
+
+    <select id="selectUsernmEmail" parameterType="String" resultType="RvwDto">
+        SELECT usr_id,
+               usr_nm,
+               email
+        FROM usr
+        WHERE usr_id = #{usr_id}
+    </select>
+
+    <select id="selectPrdnm" parameterType="String" resultType="RvwDto">
+        SELECT B.prd_dtl_cd,
+               B.prd_nm,
+               B.prd_cd
+        FROM pay A INNER JOIN trv_prd_dtl B ON A.prd_dtl_cd = B.prd_dtl_cd
+        WHERE A.cmn_cd_pay_stt ='7C'
+        AND A.usr_id = #{usr_id}
+        AND B.loc_fin_date <![CDATA[<=]]> CURRENT_TIMESTAMP
+    </select>
+
+
+    <select id="selectPage" parameterType="map" resultType="RvwDto">
+        SELECT A.rvw_no,
+            A.rvw_ttl,
+                A.rvw_cont,
+                A.wrt_nm,
+                B.img_pth,
+                A.rvw_reg_date,
+                A.rvw_vcnt,
+                A.lk_cnt
+        FROM rvw A INNER JOIN prd_img B ON A.prd_cd = B.prd_cd
+        INNER JOIN usr C ON A.usr_id = C.usr_id
+        ORDER BY A.rvw_no DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="selectAll" resultType="RvwDto">
+        SELECT A.rvw_ttl,
+               A.rvw_cont,
+               A.wrt_nm,
+               B.img_pth,
+               A.rvw_reg_date,
+               A.rvw_vcnt,
+               A.lk_cnt
+        FROM rvw A INNER JOIN prd_img B ON A.prd_cd = B.prd_cd
+                   INNER JOIN usr C ON A.usr_id = C.usr_id
+        ORDER BY A.rvw_reg_date DESC, A.rvw_no DESC
+    </select>
+
+    <update id="increaseViewCnt" parameterType="int">
+        UPDATE rvw
+        SET rvw_vcnt = rvw_vcnt + 1
+        WHERE rvw_no = #{rvw_no}
+    </update>
+    
+    <insert id="insert" parameterType="RvwDto">
+        INSERT INTO rvw
+            (usr_id, prd_cd, prd_dtl_cd, wrt_nm, wrt_email, rvw_ttl, rvw_cont, frs_reg_date, frs_rgs_no, fnl_mod_date, fnl_mod_no)
+        VALUES
+            (#{usr_id}, #{prd_cd}, #{prd_dtl_cd}, #{wrt_nm}, #{wrt_email}, #{rvw_ttl}, #{rvw_cont}, CURRENT_TIMESTAMP, #{usr_id}, CURRENT_TIMESTAMP, #{usr_id})
+    </insert>
+    
+    <select id="select" parameterType="int" resultType="RvwDto">
+        SELECT A.rvw_no,
+            A.rvw_ttl,
+               A.lk_cnt,
+               A.wrt_nm,
+               A.rvw_reg_date,
+               A.rvw_vcnt,
+               A.rvw_cont,
+               B.img_pth,
+               C.prd_nm,
+               A.prd_dtl_cd
+        FROM rvw A INNER JOIN prd_img B ON A.prd_cd = B.prd_cd
+                   INNER JOIN trv_prd_dtl C ON A.prd_dtl_cd = C.prd_dtl_cd
+        WHERE rvw_no = #{rvw_no};
+    </select>
+
+    <update id="update" parameterType="RvwDto">
+        UPDATE rvw
+        SET rvw_ttl = #{rvw_ttl},
+            rvw_cont = #{rvw_cont},
+            prd_cd = #{prd_cd},
+            prd_dtl_cd = #{prd_dtl_cd},
+            rvw_mdf_date = CURRENT_TIMESTAMP,
+            fnl_mod_date = CURRENT_TIMESTAMP,
+            fnl_mod_no = #{usr_id}
+        WHERE rvw_no = #{rvw_no} and wrt_nm = #{wrt_nm}
+    </update>
+
+    <select id="searchSelectPage" parameterType="SearchCondition" resultType="RvwDto">
+        SELECT A.rvw_no,
+               A.rvw_ttl,
+               A.rvw_cont,
+               A.wrt_nm,
+               B.img_pth,
+               A.rvw_reg_date,
+               A.rvw_vcnt,
+               A.lk_cnt
+        FROM rvw A INNER JOIN prd_img B ON A.prd_cd = B.prd_cd
+                   INNER JOIN usr C ON A.usr_id = C.usr_id
+        WHERE true
+          <include refid="searchCondition"/>
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM rvw A INNER JOIN prd_img B ON A.prd_cd = B.prd_cd
+                   INNER JOIN usr C ON A.usr_id = C.usr_id
+        WHERE true
+        <include refid="searchCondition"/>
+    </select>
+    
+    <update id="updateCommentCnt" parameterType="map">
+        UPDATE rvw
+        SET cmt_cnt = cmt_cnt + #{cnt}
+        WHERE rvw_no = #{rvw_no}
+    </update>
+
+    <select id="getprdCd" parameterType="String" resultType="String">
+        SELECT prd_cd
+        FROM trv_prd_dtl
+        WHERE prd_dtl_cd = #{prd_dtl_cd}
+    </select>
+
+    <select id="checkRvwUser" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM rvw
+        WHERE usr_id = #{usr_id}
+        AND rvw_no = #{rvw_no}
+    </select>
+
+    <update id="increaseLikeCnt" parameterType="int">
+        UPDATE rvw
+        SET lk_cnt = lk_cnt + 1
+        WHERE rvw_no = #{rvw_no}
+    </update>
+    
+    <update id="decreaseLikeCnt" parameterType="int">
+        UPDATE rvw
+        SET lk_cnt = lk_cnt - 1
+        WHERE rvw_no = #{rvw_no}
+    </update>
+
+    <select id="cntnCdSearch" parameterType="SearchCondition" resultType="RvwDto">
+        SELECT A.*
+        FROM rvw A INNER JOIN trv_prd B ON A.prd_cd = B.prd_cd
+        WHERE B.cntn_cd = #{cntn_cd}
+        ORDER BY A.rvw_no DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="cntnCdSearchResultCnt" parameterType="SearchCondition" resultType="int">
+        SELECT count(*)
+        FROM rvw A INNER JOIN trv_prd B ON A.prd_cd = B.prd_cd
+        WHERE B.cntn_cd = #{cntn_cd}
+    </select>
+
+    <select id="getRvwttlRvwCont" parameterType="int" resultType="RvwDto">
+        SELECT rvw_ttl,
+               rvw_cont,
+               wrt_nm,
+               wrt_email,
+               usr_id,
+               rvw_no
+        FROM rvw
+        WHERE rvw_no = #{rvw_no}
+    </select>
+
+</mapper>

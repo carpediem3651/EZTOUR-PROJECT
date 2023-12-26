@@ -1,0 +1,119 @@
+.admin__wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.admin__main {
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+}
+
+.admin__side-menu {
+    float: left;
+    width: 15%;
+    padding-top: 150px;
+}
+
+.admin__content {
+    float: right;
+    width: 84%;
+    height: 100%;
+    /*border-left: 1px solid rgba(0,0,0,.1);*/
+}
+
+.side-menu__one,
+.side-menu__two,
+.side-menu__three {
+    margin-bottom: 40px;
+}
+
+.side-menu__one li,
+.side-menu__two li,
+.side-menu__three li,
+.side-menu__four li {
+    margin-bottom: 5px;
+}
+
+.prd_tlt,
+.side-menu__four li {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.admin__tit {
+    margin: 70px 0 30px 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.admin__board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.board_content_detail {
+    display: flex;
+}
+
+.admin__board--tit,
+.board_content_detail {
+    display: flex;
+    padding: 20px 10px;
+    border-bottom:  1px solid rgba(0,0,0,.2);
+}
+
+.admin__board--tit_pcode {
+    text-align: center;
+    width: 10%;
+}
+
+.admin__board--tit_tcode {
+    text-align: center;
+    width: 10%;
+}
+
+.admin__board--tit_name {
+    text-align: center;
+    width: 60%;
+}
+
+.admin__board--tit_price {
+    text-align: center;
+    width: 10%;
+}
+
+.admin__board--tit_state {
+    text-align: center;
+    width: 10%;
+}
+
+.search_option_form,
+.paging_list {
+    display: flex;
+    justify-content: center;
+}
+
+.paging_list {
+    margin-top: 25px;
+    padding-bottom: 100px;
+}
+
+.paging_list span {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+#search_btn {
+    all: unset;
+    background: #1c1c1c;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 40px;
+    height: 22px;
+    font-size: 12px;
+}

@@ -1,0 +1,623 @@
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+
+
+.detail-item__main {
+    margin: 100px auto;
+    width: 1200px;
+    overflow:hidden;
+    height:auto;
+}
+
+.detail-item__title {
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+
+.detail-item__title h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.detail-item__info {
+    width: 73%;
+    float: left;
+}
+
+.detail-item__img {
+    margin-bottom: 30px;
+    width: 100%;
+    height: 512px;
+
+}
+
+.detail-item__img img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.detail-item__view {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.detail-item__view--book span:nth-child(2) em,
+.detail-item__view--book span:last-child em:first-child {
+    color: red;
+}
+
+.detail-item__view--book span:last-child em:last-child {
+    color: blue;
+}
+
+.detail-item__view--rvw a {
+    font-weight: 700;
+}
+
+.detail-item__price-info,
+.detail-item__air-info {
+    border: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.price-info__tit,
+.price-info__age1,
+.price-info__age2,
+.price-info__age3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-info__tit span,
+.price-info__age1 span,
+.price-info__age2 span,
+.price-info__age3 span {
+    text-align: right;
+    padding: 20px 52px 20px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    font-size: 15.85px;
+}
+
+.price-info__age1 span:last-child,
+.price-info__age2 span:last-child,
+.price-info__age3 span:last-child {
+    font-weight: 900;
+}
+
+.price-info__tit span {
+    text-align: left;
+}
+
+.detail-item__air-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+.air-info__air {
+    display: flex;
+    flex-direction: column;
+}
+
+.air-info__air span:first-child {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.air-info__air span:first-child,
+.dom_dpr_date,
+.loc_fin_date {
+    margin-bottom: 20px;
+}
+
+.dom_dpr_date span:first-child::after,
+.loc_dpr_date span:first-child::after,
+.loc_fin_date span:first-child::after,
+.dom_fin_date span:first-child::after {
+    content: '|';
+    margin-right: 15px;
+    margin-left: 15px;
+    color: rgba(0, 0, 0, .3);
+    font-size: 15px;
+}
+
+.detail-item__menu {
+    margin-top: 40px;
+}
+
+.ul-wrap {
+    width: 100%;
+}
+
+ul.detail-item__tab{
+    display: flex;
+}
+
+ul.detail-item__tab li{
+    flex: 1;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    z-index: 0;
+}
+
+ul.detail-item__tab li.selected{
+    border: 1px solid black;
+}
+
+.detail-item__rev-wrap {
+    width: 25%;
+    float: right;
+}
+
+.detail-item__rev {
+    top: 30px;
+    position: sticky;
+}
+
+.cont_box{
+    display: none;
+    padding: 12px;
+    margin-top: 30px;
+}
+
+.cont_box__tit {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+
+.cont_box.selected{
+    display: inherit;
+}
+
+.detail-item__pay {
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    margin: 30px 0;
+    padding: 30px 0;
+}
+
+/*tab1*/
+.luggage,
+.whole-schedule {
+    margin-top: 60px;
+}
+
+.nth-day {
+    margin-bottom: 30px;
+}
+
+.schedule__tit {
+    font-size: 19px;
+    font-weight: 700;
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 25px;
+    background-color: #f7f7f7;
+    /*margin-bottom: 30px;*/
+}
+
+.schedule__cont {
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 25px;
+}
+
+.air_schedule {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 60px 0;
+}
+
+.start_schedule,
+.arrive_schedule {
+    display: flex;
+}
+
+.start_schedule i,
+.arrive_schedule i {
+    font-size: 60px;
+}
+
+.start_schedule-info,
+.arrive_schedule-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.start_schedule-info span:first-child,
+.arrive_schedule-info span:first-child {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.start_schedule-info span:not(:first-child),
+.arrive_schedule-info span:not(:first-child) {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.schedule__cont--tit span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.schedule__cont--tit p {
+    margin: 25px 0;
+}
+
+.tit-second {
+    margin-top: 60px;
+}
+
+.schedule__cont--img {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.schedule__img {
+    height: 210px;
+    width: 250px;
+    border-radius: 20px;
+}
+
+.schedule__cont--detail {
+    box-sizing: border-box;
+}
+
+.schedule__cont--detail p {
+    font-weight: normal;
+    line-height: 1.4;
+    font-size: 14px;
+    letter-spacing: -0.42px;
+    box-sizing: border-box;
+}
+
+/*tab2*/
+.rev-notice {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    border-top:  1px solid rgba(0,0,0,1);
+}
+
+.rev-notice__pre-notice,
+.rev-notice__deposit,
+.rev-notice__etc,
+.conditions-info{
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    line-height: 1.4;
+    font-size: 14px;
+    letter-spacing: -0.42px;
+}
+
+.pre-notice__tit,
+.deposit__tit,
+.etc__tit,
+.conditions-info__tit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+    min-width: 180px;
+    font-size: 16px;
+    border-right: 1px solid rgba(0,0,0,.1);
+    font-weight: 600;
+}
+
+.item-cell > * {
+    padding: 20px 30px;
+}
+
+/*tab3*/
+.go-qna {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: #f7f7f7;
+    margin-top: 60px;
+}
+
+.go-qna__con p {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.go-qna__btn a {
+    padding: 13px 18px;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 15px;
+    display: inline-flex;
+}
+
+/*tab4*/
+.conditions-info {
+    border-top:  1px solid rgba(0,0,0,1);
+    margin-top: 60px;
+}
+
+/*tab5*/
+.gogo {
+    margin-top: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gogo__img {
+    width: 10%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(0,0,0,.1);
+    box-sizing: border-box;
+    padding: 30px 20px;
+}
+
+.gogo__con {
+    width: 90%;
+    float: right;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.gogo__img img {
+    width: 60px;
+    height: 60px;
+}
+
+.gogo__con p:first-child {
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.gogo__con p:nth-child(2) {
+    font-weight: 400;
+}
+
+.gogo__con-a {
+    cursor: pointer;
+    color: #006f80 !important;
+}
+
+.gogo__btn {
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 5px 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    align-self: flex-end;
+    margin-top: 40px;
+}
+
+/*예약*/
+.rev__code {
+    margin-bottom: 20px;
+}
+
+.rev__code span:first-child,
+.rev__date span,
+.pay__info span:first-child {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.rev__code span:first-child,
+.rev__date span:first-child {
+    margin-right: 15px;
+}
+
+.rev__code span:last-child {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.pay__info span:first-child {
+    margin-bottom: 10px;
+}
+
+.pay__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pay__info span:last-child {
+    font-size: 26px;
+    font-weight: 700;
+    width: 136px;
+    text-align: right;
+}
+
+.pay__info span:last-child em {
+    font-size: 17px;
+}
+
+.pay_adult,
+.pay_child,
+.pay_baby {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pay__combo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pay-margin {
+    margin-bottom: 25px;
+}
+
+.pay__combo-box button {
+    all: unset;
+    height: 40px;
+    width: 40px;
+    border: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pay__combo-box input {
+    all: unset;
+    height: 40px;
+    width: 60px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.pay__combo-box input[type="text"] {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    margin: 0 -1px;
+}
+
+.detail-item__total-pay {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.detail-item__total-pay span {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.detail-item__total-pay #total_price {
+    font-family: 'Alatsi', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.detail-item__total-pay div {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.detail-item__total-pay div input[type="number"] {
+    all: unset;
+    text-align: right;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.detail-item__rev-btn {
+    margin-top: 30px;
+}
+
+.detail-item__rev-btn button {
+    all: unset;
+    background: #1c1c1c;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+}
+
+/* login check modal box */
+.login-confirm__modal{
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000000ad;
+    padding-top: 50px;
+}
+
+.login-confirm__close{
+    font-size: 40px;
+    color: #030303;
+    display: block;
+    text-align: right;
+    padding: 16px 32px 0 0;
+}
+
+.login-confirm__close:hover,
+.login-confirm__close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+.login-confirm__modal-content{
+    background-color: #fefefe;
+    margin: 0 auto;
+    width: 480px;
+}
+
+.login-confirm__container{
+text-align: center;
+}
+
+.login-confirm__commentbox{
+    margin: 38px auto 40px auto;
+    height: 43px;
+}
+
+/* clear floats */
+.clearfix::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.login-confirm__btn{
+    padding: 22px 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    opacity: 0.9;
+    float: left;
+    width: 50%;
+}
+
+.login-confirm__btn:hover{
+    opacity:1;
+}
+
+.login-confirm__btn--guest{
+    background-color: white;
+    color: black;
+}
+
+.login-confirm__btn--login{
+    background-color: black;
+    color: white;
+}
+
+.login-confirm__alert {
+    display: none;
+    margin-top: 9px;
+    color: #e42222;
+}

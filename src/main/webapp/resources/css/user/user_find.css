@@ -1,0 +1,165 @@
+
+.find-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.find-info{
+    font-size: 14px;
+    color : #999999;
+    padding: 5px 0px;
+}
+
+.outer-content{
+    display : flex;
+    justify-content : center;
+}
+
+.inner-content{
+    width : 640px;
+    height : 840px;
+    display : flex;
+    justify-content : center;
+}
+
+.find-nav{
+    padding-top : 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.find-nav button{
+    width : 270px;
+    height : 50px;
+    background-color: white;
+    font-size: 18px;
+    border: white;
+}
+
+#findId{
+    border-bottom: 3px solid #333333;
+    color:#333333;
+}
+
+#findPwd{
+    border-bottom: 3px solid #E6E6E6;
+    color:gray;
+}
+
+.form-inp, .form-inp-find{
+    padding-top : 30px;
+    width: 540px;
+    margin-left: 5px;
+}
+
+#usr_nm, #phn, #usrid, #usrnm, #email, #checkNum, #email1, #email2{
+    width: 500px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 0px 20px;
+    min-height: 50px;
+    margin-bottom: 10px;
+}
+
+#findIdBtn, #findPwdBtn, #checkAuthBtn, #mail-Check-Btn, #mailCheckBtn{
+    width: 540px;
+    height : 50px;
+    margin: 0px 0px;
+    background-color: #333333;
+    color: white;
+}
+
+.phn{
+    width: 542px;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.phn input{
+    width: 140px;
+    line-height: 30px;
+    min-height: 50px;
+    margin-right:10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding : 0px 20px;
+}
+
+.mail-check-input{
+    width: 500px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 0px 20px;
+    min-height: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.form-check-input{
+    border: 1px solid #e5e5e5;
+    outline: none;
+    border-radius: 2px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 350px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+hr{
+    margin-top: 20px;
+    width: 460px;
+    border-color : #cccccc;
+}
+
+#toLoginBtn {
+    all: unset;
+    background: #1c1c1c;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.pwd-check-input{
+    width: 200px;
+    font-size: 15px;
+    line-height: 30px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 0px 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#pwdChangeBtn{
+    all: unset;
+    background: #1c1c1c;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 300px;
+    height: 30px;
+    font-size: 12px;
+    margin-top: 10px;
+}

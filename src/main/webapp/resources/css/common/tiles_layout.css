@@ -1,0 +1,25 @@
+@charset "UTF-8";
+@import "reset.css";
+
+/* tiles_layout */
+@import "header.css";
+@import "footer.css";
+
+/* screens */
+
+.warp {
+	width: 100%;
+	height: 100%;
+}
+
+.content-wrap {
+	width: 100%;
+	min-height: 100vh;
+}
+
+.content {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+}
+
